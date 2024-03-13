@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card class="pa-2">
-      <v-card-title> Adicionar uma Nova Task </v-card-title>
+      <v-card-title> Adicionar uma Nova Tarefa </v-card-title>
       <v-card-text>
         <v-text-field
           label="Titulo Task"
@@ -37,6 +37,7 @@
 //******IMPORTS*******"
 import { onMounted } from "vue";
 import TodoList from "@/components/TodoList";
+import DialogTaskForm from "@/components/DialogTaskForm";
 //******IMPORTS*******"
 
 //******COMPOSABLES*******"

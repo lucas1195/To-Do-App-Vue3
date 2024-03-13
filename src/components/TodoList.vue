@@ -25,15 +25,22 @@
             <v-btn icon="mdi-dots-vertical" color="warning" v-bind="props" />
           </template>
           <v-list>
-            <v-list-item>
-              <v-list-item-title><v-btn>Editar</v-btn></v-list-item-title>
+            <v-list-item value="1">
+              <v-list-item-title @click="showDialogTaskForm = true"
+                >Editar</v-list-item-title
+              >
             </v-list-item>
-            <v-list-item>
-              <v-list-item-title><v-btn>Deletar</v-btn></v-list-item-title>
+            <v-list-item value="2">
+              <v-list-item-title>Deletar</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
       </template>
+      <DialogTaskForm
+        :showDialog="showDialogTaskForm"
+        @close="showDialogTaskForm = false"
+        :task="task"
+      />
     </v-list-item>
   </v-list>
 </template>
@@ -60,7 +67,7 @@ const props = defineProps({
 //******EMITS*******"
 
 //******VARIAVEIS*******"
-
+const showDialogTaskForm = ref(false);
 //******VARIAVEIS*******"
 
 //******WATCHS*******"
