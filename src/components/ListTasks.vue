@@ -19,34 +19,24 @@
         ></v-text-field>
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="addTask" append-icon="$vuetify" variant="outlined">
+        <v-btn
+          @click="addTask"
+          append-icon="$vuetify"
+          variant="outlined"
+          color="warning"
+        >
           Add Task
         </v-btn>
       </v-card-actions>
     </v-card>
-    <v-list lines="three" select-strategy="classic">
-      <v-list-subheader>General Tasks</v-list-subheader>
-      <v-list-item v-for="(task, index) in tasks" :key="index" :value="index">
-        <template v-slot:prepend="{ isActive }">
-          <v-list-item-action start>
-            <v-checkbox-btn
-              :name="index"
-              :model-value="isActive"
-            ></v-checkbox-btn>
-          </v-list-item-action>
-        </template>
-        <v-list-item-title :name="index">{{ task.title }} </v-list-item-title>
-        <v-list-item-subtitle :name="index"
-          >{{ task.descricao }}
-        </v-list-item-subtitle>
-      </v-list-item>
-    </v-list>
+    <TodoList :tasks="tasks" />
   </div>
 </template>
 
 <script setup>
 //******IMPORTS*******"
 import { onMounted } from "vue";
+import TodoList from "@/components/TodoList";
 //******IMPORTS*******"
 
 //******COMPOSABLES*******"
