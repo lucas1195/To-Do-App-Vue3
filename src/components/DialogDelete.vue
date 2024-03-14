@@ -1,21 +1,21 @@
 <template>
   <div class="pa-4 text-center">
     <v-dialog max-width="800" v-model="props.showDialog" persistent>
-      <v-card title="Editar Tarefa">
+      <v-card title="Deseja remover a tarefa?">
         <template v-slot:text>
           <v-card class="pa-2" flat>
             <v-card-text>
               <v-text-field
+                readonly
                 label="Titulo Task"
-                clearable
-                variant="outlined"
+                variant="solo-filled"
                 class="mt-4"
                 v-model="props.task.title"
               ></v-text-field>
               <v-text-field
+                readonly
                 label="Descrição"
-                clearable
-                variant="outlined"
+                variant="solo-filled"
                 class="mt-4"
                 v-model="props.task.descricao"
               ></v-text-field>
@@ -28,8 +28,8 @@
           <v-btn
             text="Confirmar"
             variant="elevated"
+            @click="emit('confirm')"
             color="success"
-            @click="emit('close')"
           ></v-btn>
 
           <v-btn

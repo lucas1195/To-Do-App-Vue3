@@ -26,12 +26,16 @@
           </template>
           <v-list>
             <v-list-item value="1">
-              <v-list-item-title @click="showDialogTaskForm = true"
+              <v-list-item-title
+                @click="handleCurrentTask(index), (showDialogTaskForm = true)"
                 >Editar</v-list-item-title
               >
             </v-list-item>
             <v-list-item value="2">
-              <v-list-item-title>Deletar</v-list-item-title>
+              <v-list-item-title
+                @click="handleCurrentTask(index), (showDialogDelete = true)"
+                >Deletar</v-list-item-title
+              >
             </v-list-item>
           </v-list>
         </v-menu>
@@ -39,7 +43,13 @@
       <DialogTaskForm
         :showDialog="showDialogTaskForm"
         @close="showDialogTaskForm = false"
-        :task="task"
+        :task="currentTask"
+      />
+      <DialogDelete
+        :showDialog="showDialogDelete"
+        @close="showDialogDelete = false"
+        :task="currentTask"
+        @confirm="handleConfirmDelete(index), (showDialogDelete = false)"
       />
     </v-list-item>
   </v-list>
@@ -68,6 +78,8 @@ const props = defineProps({
 
 //******VARIAVEIS*******"
 const showDialogTaskForm = ref(false);
+const showDialogDelete = ref(false);
+const currentTask = ref({});
 //******VARIAVEIS*******"
 
 //******WATCHS*******"
@@ -83,6 +95,13 @@ onMounted(() => {});
 //******LIFECYCLE HOOKS*******"
 
 //******METHODS*******"
+const handleConfirmDelete = (index) => {
+  props.tasks.splice(index, 1);
+};
+
+const handleCurrentTask = (index) => {
+  currentTask.value = props.tasks[index];
+};
 
 //******METHODS*******"
 
