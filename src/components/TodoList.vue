@@ -2,7 +2,7 @@
   <v-list lines="three" select-strategy="classic">
     <v-list-subheader>General Tasks</v-list-subheader>
     <v-list-item
-      v-for="(task, index) in props.tasks"
+      v-for="(task, index) in taskStore.$tasks"
       :key="index"
       :value="index"
     >
@@ -44,12 +44,13 @@
         :showDialog="showDialogTaskForm"
         @close="showDialogTaskForm = false"
         :task="currentTask"
+        :currentIndex="currentIndex"
       />
       <DialogDelete
         :showDialog="showDialogDelete"
         @close="showDialogDelete = false"
         :task="currentTask"
-        @confirm="handleConfirmDelete(index), (showDialogDelete = false)"
+        :currentIndex="currentIndex"
       />
     </v-list-item>
   </v-list>
@@ -57,11 +58,11 @@
 
 <script setup>
 //******IMPORTS*******"
-import { onMounted } from "vue";
+import { useTaskStore } from "@/store/taskStore";
 //******IMPORTS*******"
 
 //******COMPOSABLES*******"
-
+const taskStore = useTaskStore();
 //******COMPOSABLES*******"
 
 //******PROPS*******"
@@ -80,6 +81,7 @@ const props = defineProps({
 const showDialogTaskForm = ref(false);
 const showDialogDelete = ref(false);
 const currentTask = ref({});
+const currentIndex = ref();
 //******VARIAVEIS*******"
 
 //******WATCHS*******"
@@ -95,12 +97,9 @@ onMounted(() => {});
 //******LIFECYCLE HOOKS*******"
 
 //******METHODS*******"
-const handleConfirmDelete = (index) => {
-  props.tasks.splice(index, 1);
-};
-
 const handleCurrentTask = (index) => {
-  currentTask.value = props.tasks[index];
+  currentTask.value = taskStore.$tasks[index];
+  currentIndex.value = index;
 };
 
 //******METHODS*******"

@@ -69,7 +69,7 @@ const emit = defineEmits(["close", "confirm"]);
 //******EMITS*******"
 
 //******VARIAVEIS*******"
-const showDialog = ref(true);
+
 //******VARIAVEIS*******"
 
 //******WATCHS*******"

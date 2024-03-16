@@ -36,12 +36,12 @@
 <script setup>
 //******IMPORTS*******"
 import { onMounted } from "vue";
+import { useTaskStore } from "@/store/taskStore";
 import TodoList from "@/components/TodoList";
-import DialogTaskForm from "@/components/DialogTaskForm";
 //******IMPORTS*******"
 
 //******COMPOSABLES*******"
-
+const taskStore = useTaskStore();
 //******COMPOSABLES*******"
 
 //******PROPS*******"
@@ -80,7 +80,7 @@ const addTask = () => {
     descricao: model.value.descricao,
   };
 
-  tasks.value.push(params);
+  taskStore.keepItemsTasks(params);
 
   model.value = {
     title: "",

@@ -28,7 +28,9 @@
           <v-btn
             text="Confirmar"
             variant="elevated"
-            @click="emit('confirm')"
+            @click="
+              taskStore.removeItemTasks(props.currentIndex), emit('close')
+            "
             color="success"
           ></v-btn>
 
@@ -46,11 +48,11 @@
 
 <script setup>
 //******IMPORTS*******"
-import { onMounted } from "vue";
+import { useTaskStore } from "@/store/taskStore";
 //******IMPORTS*******"
 
 //******COMPOSABLES*******"
-
+const taskStore = useTaskStore();
 //******COMPOSABLES*******"
 
 //******PROPS*******"
@@ -59,6 +61,9 @@ const props = defineProps({
     type: Boolean,
   },
   task: {
+    type: Object,
+  },
+  currentIndex: {
     type: Object,
   },
 });
