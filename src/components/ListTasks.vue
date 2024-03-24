@@ -1,34 +1,41 @@
 <template>
   <div>
-    <v-card class="pa-2">
-      <v-card-title> Adicionar uma Nova Tarefa </v-card-title>
-      <v-card-text>
-        <v-text-field
-          label="Titulo Task"
-          clearable
-          variant="outlined"
-          class="mt-4"
-          v-model="model.title"
-        ></v-text-field>
-        <v-text-field
-          label="Descrição"
-          clearable
-          variant="outlined"
-          class="mt-4"
-          v-model="model.descricao"
-        ></v-text-field>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn
-          @click="addTask"
-          append-icon="$vuetify"
-          variant="outlined"
-          color="warning"
-        >
-          Add Task
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+    <v-container fluid>
+      <v-row justify="center">
+        <v-col cols="6" class="mx-auto">
+          <v-card class="pa-2" elevation="4">
+            <v-card-title> Adicionar uma Nova Tarefa </v-card-title>
+            <v-card-text>
+              <v-text-field
+                label="Titulo Task"
+                clearable
+                variant="outlined"
+                class="mt-4"
+                v-model="model.title"
+              ></v-text-field>
+              <v-text-field
+                label="Descrição"
+                clearable
+                variant="outlined"
+                class="mt-4"
+                v-model="model.descricao"
+              ></v-text-field>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn
+                @click="addTask"
+                append-icon="$vuetify"
+                color="warning"
+                variant="flat"
+              >
+                Add Task
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-divider />
     <TodoList />
   </div>
 </template>
