@@ -29,7 +29,10 @@
             text="Confirmar"
             variant="elevated"
             color="success"
-            @click="emit('close')"
+            @click="
+              taskStore.updateItemsTasks(props.currentIndex, updatedTask),
+                emit('close')
+            "
           ></v-btn>
 
           <v-btn
@@ -47,10 +50,11 @@
 <script setup>
 //******IMPORTS*******"
 import { onMounted } from "vue";
+import { useTaskStore } from "@/store/taskStore";
 //******IMPORTS*******"
 
 //******COMPOSABLES*******"
-
+const taskStore = useTaskStore();
 //******COMPOSABLES*******"
 
 //******PROPS*******"
@@ -61,6 +65,9 @@ const props = defineProps({
   task: {
     type: Object,
   },
+  currentIndex: {
+    type: Number,
+  },
 });
 //******PROPS*******"
 
@@ -69,7 +76,12 @@ const emit = defineEmits(["close", "confirm"]);
 //******EMITS*******"
 
 //******VARIAVEIS*******"
-
+const updatedTask = computed(() => {
+  return {
+    title: props.task.title,
+    descricao: props.task.descricao,
+  };
+});
 //******VARIAVEIS*******"
 
 //******WATCHS*******"

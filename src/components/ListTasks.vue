@@ -29,7 +29,7 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-    <TodoList :tasks="tasks" />
+    <TodoList />
   </div>
 </template>
 

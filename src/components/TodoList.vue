@@ -93,7 +93,9 @@ const currentIndex = ref();
 //******COMPUTEDS*******"
 
 //******LIFECYCLE HOOKS*******"
-onMounted(() => {});
+onMounted(() => {
+  taskStore.getLocalData();
+});
 //******LIFECYCLE HOOKS*******"
 
 //******METHODS*******"
