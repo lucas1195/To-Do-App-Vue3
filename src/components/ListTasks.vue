@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row justify="center">
         <v-col cols="6" class="mx-auto">
-          <v-card class="pa-2" elevation="4">
+          <v-card class="pa-2" elevation="2">
             <v-card-title> Adicionar uma Nova Tarefa </v-card-title>
             <v-card-text>
               <v-text-field
